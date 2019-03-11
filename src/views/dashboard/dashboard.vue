@@ -122,7 +122,7 @@ export default {
           },
           {
             name: 'Tina',
-            src: 'static/img/mock/card/card-3.jpg',
+            src: 'static/img/mock/card/card-3.jpeg',
             text: '三老婆'
           },
           {

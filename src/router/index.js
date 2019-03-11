@@ -87,8 +87,28 @@ export const constantRouterMap = [
         meta: { title: '表格', icon: 'dashboard' }
       }
     ]
-  }
-
+  },
+  
+  // 模块定义
+  {
+    path: '/module',
+    component: Layout,
+    meta: { title: '基础资料', icon: 'dashboard' },
+    children: [
+      {
+        path: 'module',
+        name: 'module',
+        component: () => import('@/views/basic/module/form.vue'),
+        meta: { title: '模块定义', icon: 'dashboard' }
+      },
+      {
+        path: 'list',
+        name: 'module',
+        component: () => import('@/views/basic/module/list.vue'),
+        meta: { title: '模块查询', icon: 'dashboard' }
+      }
+    ]
+  },
   /*
   // 图表
   {
