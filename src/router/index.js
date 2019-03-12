@@ -95,17 +95,69 @@ export const constantRouterMap = [
     component: Layout,
     meta: { title: '基础资料', icon: 'dashboard' },
     children: [
+      /**
       {
         path: 'module',
         name: 'module',
         component: () => import('@/views/basic/module/form.vue'),
         meta: { title: '模块定义', icon: 'dashboard' }
       },
+       */
       {
-        path: 'list',
+        path: 'module/list',
         name: 'module',
         component: () => import('@/views/basic/module/list.vue'),
         meta: { title: '模块查询', icon: 'dashboard' }
+      },
+      /*
+      {
+        path: 'payway',
+        name: 'payway',
+        component: () => import('@/views/basic/payway/form.vue'),
+        meta: { title: '支付方式定义', icon: 'dashboard' }
+      },
+      */
+      {
+        path: 'payway/list',
+        name: 'payway',
+        component: () => import('@/views/basic/payway/list.vue'),
+        meta: { title: '支付方式', icon: 'dashboard' }
+      },
+      {
+        path: 'business/list',
+        name: 'businessman',                   
+        component: () => import('@/views/basic/businessman/list.vue'),
+        meta: { title: '业务员管理', icon: 'dashboard' }
+      }
+    ]
+  },
+
+  // 报表
+  {
+    path: '/order',
+    component: Layout,
+    meta: { title: '订单管理', icon: 'dashboard' },
+    children: [
+      {
+        path: 'order',
+        name: 'order',
+        component: () => import('@/views/border/list.vue'),
+        meta: { title: '订单管理', icon: 'dashboard' }
+      }
+    ]
+  },
+  
+  // 商户管理
+  {
+    path: '/clientmanagement',
+    component: Layout,
+    meta: { title: '商户管理', icon: 'dashboard' },
+    children: [
+      {
+        path: 'clientmanagement',
+        name: 'clientmanagement',
+        component: () => import('@/views/clientmanagement/clientregister/list.vue'),
+        meta: { title: '商户注册', icon: 'dashboard' }
       }
     ]
   },

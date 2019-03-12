@@ -14,7 +14,7 @@
 				</el-form-item>
 			</el-form>
 		</el-col>
-
+        
 		<!--列表-->
 		<el-table :data="users" highlight-current-row @selection-change="selsChange" style="width: 100%;">
 			<el-table-column type="selection" width="55">
@@ -52,32 +52,16 @@
 
 		<!--编辑界面-->
 		<el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" :close-on-click-modal="false">
-			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
+			<el-form :model="editForm" label-width="120px" :rules="editFormRules" ref="editForm">
         <el-row>
             <el-col :span="12">
-                <el-form-item label="模块编码" prop="number">
+                <el-form-item label="支付方式编码" prop="number">
                     <el-input v-model="editForm.number" auto-complete="off"></el-input>
                 </el-form-item>
             </el-col>
             <el-col :span="12">
-                <el-form-item label="模块名称" prop="name">
+                <el-form-item label="支付方式名称" prop="name">
                     <el-input v-model="editForm.name"></el-input>
-                </el-form-item>
-            </el-col>
-        </el-row>
-
-        <el-row>
-            <el-col :span="12">
-                <el-form-item label="模板类型">
-                <el-select v-model="editForm.type" placeholder="请选择">
-                        <el-option key="bbk" label="基础模板" value="bbk"></el-option>
-                        <el-option key="xtc" label="增值模板" value="xtc"></el-option>
-                    </el-select>
-                </el-form-item>
-            </el-col>
-            <el-col :span="12">
-                <el-form-item label="单价">
-                    <el-input-number v-model="editForm.price"></el-input-number>
                 </el-form-item>
             </el-col>
         </el-row>

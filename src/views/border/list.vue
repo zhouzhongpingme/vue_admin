@@ -55,53 +55,97 @@
 			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
         <el-row>
             <el-col :span="12">
-                <el-form-item label="模块编码" prop="number">
+                <el-form-item label="订单编码" prop="number">
                     <el-input v-model="editForm.number" auto-complete="off"></el-input>
                 </el-form-item>
             </el-col>
             <el-col :span="12">
-                <el-form-item label="模块名称" prop="name">
-                    <el-input v-model="editForm.name"></el-input>
+                <el-form-item label="订单类型">
+                <el-select v-model="editForm.type" placeholder="请选择">
+                    <el-option key="bbk" label="采购" value="bbk"></el-option>
+                    <el-option key="xtc" label="续约" value="xtc"></el-option>
+                    <el-option key="bbk" label="升级" value="bbk"></el-option>
+                </el-select>
                 </el-form-item>
             </el-col>
         </el-row>
 
         <el-row>
             <el-col :span="12">
-                <el-form-item label="模板类型">
-                <el-select v-model="editForm.type" placeholder="请选择">
-                        <el-option key="bbk" label="基础模板" value="bbk"></el-option>
-                        <el-option key="xtc" label="增值模板" value="xtc"></el-option>
+                <el-form-item label="应收金额">
+                    <el-input-number v-model="editForm.payamount"></el-input-number>
+                </el-form-item>
+            </el-col>
+            <el-col :span="12">
+                <el-form-item label="折扣金额">
+                    <el-input-number v-model="editForm.discount"></el-input-number>
+                </el-form-item>
+            </el-col>
+        </el-row>
+
+        <el-row>
+
+            <el-col :span="12">
+                <el-form-item label="实收金额">
+                    <el-input-number v-model="editForm.actamount"></el-input-number>
+                </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+                <el-form-item label="待收金额">
+                    <el-input-number v-model="editForm.debtamount"></el-input-number>
+                </el-form-item>
+            </el-col>
+        </el-row>
+
+        <el-row>
+            <el-col :span="12">
+                <el-form-item label="支付方式">
+                <el-select v-model="editForm.payway" placeholder="请选择">
+                        <el-option key="bbk" label="现金" value="bbk"></el-option>
+                        <el-option key="xtc" label="支付宝" value="xtc"></el-option>
+                        <el-option key="wechat" label="微信" value="1"></el-option>
+                        <el-option key="chinabank" label="中国银行" value="2"></el-option>
+                        <el-option key="chiangosahng" label="工商银行" value="3"></el-option>
+                        <el-option key="nongye" label="农业银行" value="4"></el-option>
+                        <el-option key="constract" label="建设银行" value="5"></el-option>
+                        <el-option key="jiaotong" label="交通银行" value="6"></el-option>
+                        <el-option key="other" label="其他" value="7"></el-option>
                     </el-select>
                 </el-form-item>
             </el-col>
+
             <el-col :span="12">
-                <el-form-item label="单价">
-                    <el-input-number v-model="editForm.price"></el-input-number>
+                <el-form-item label="终端数量">
+                    <el-input-number v-model="editForm.terminalnumber"></el-input-number>
                 </el-form-item>
             </el-col>
         </el-row>
 
+
         <el-row>
             <el-col :span="12">
-                <el-form-item label="状态">
+                <el-form-item label="订单状态">
                 <el-select v-model="editForm.status" placeholder="请选择">
                         <el-option key="bbk" label="保存" value="bbk"></el-option>
-                        <el-option key="xtc" label="启用" value="xtc"></el-option>
-                        <el-option key="imoo" label="禁用" value="imoo"></el-option>
+                        <el-option key="xtc" label="待支付" value="xtc"></el-option>
+                        <el-option key="imoo" label="已支付" value="imoo"></el-option>
+                        <el-option key="imoo" label="部分支付" value="imoo"></el-option>
+                        <el-option key="imoo" label="作废" value="imoo"></el-option>
                     </el-select>
+                </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+                <el-form-item label="终端数量">
+                    <el-input-number v-model="editForm.terminalnumber"></el-input-number>
                 </el-form-item>
             </el-col>
         </el-row>
 
-        <el-row>
-            <el-col :span="24">
-                <el-form-item label="备注">
-                    <el-input type="textarea" rows="3" v-model="editForm.remark"></el-input>
-                </el-form-item>
-            </el-col>
-        </el-row>
-			</el-form>
+
+
+    </el-form>
 			<div slot="footer" class="dialog-footer">
 			 <el-button @click.native="dialogFormVisible=false">取消</el-button>
 			  <el-button v-if="dialogStatus=='create'" type="primary" @click="createData">添加</el-button>
@@ -139,6 +183,12 @@ export default {
             name: '',
             type: '',
             price: undefined,
+            payamount:undefined,
+            actamount:undefined,
+            discount:undefined,
+            debtamount:undefined,
+            terminalnumber:undefined,
+            payway:'',
             status:'',
             remark: '',
             createUser: '',
